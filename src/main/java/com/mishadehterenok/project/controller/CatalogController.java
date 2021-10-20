@@ -47,7 +47,7 @@ public class CatalogController {
     }
 
     //формирование каталога по категории, бренду, размеру, строке поиска, сотрировке и номеру страницы
-    @GetMapping("/catalog")
+    @GetMapping("/catalog?category=All&page=2")
     public ModelAndView showCatalogPageByCategories(@RequestParam() Map<String, String> allParams,
                                                     @SessionAttribute("sortType") String currentSortingType,
                                                     ModelAndView model) {

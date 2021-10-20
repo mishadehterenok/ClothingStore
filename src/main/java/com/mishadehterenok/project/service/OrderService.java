@@ -32,7 +32,7 @@ public class OrderService {
         return orderRepository.countByFinalPriceWhereAccount_Id(id);
     }
 
-    //если заказ существует - обновляет воличесто и итоговую цену
+    //если заказ существует - обновляет количество и итоговую цену
     public void saveOrUpdate(Order order, Long accountId){
         if (orderRepository.existsByClothing_NameAndAccount_Id(order.getClothing().getName(), accountId)) {
             orderRepository.updateExistOrder(order.getQuantity(), accountId, order.getClothing().getName());

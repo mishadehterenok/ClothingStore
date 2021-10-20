@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,7 +31,7 @@ public class RegistrationController {
 
     //TODO: добавить валидацию
     @PostMapping("/registration/save")
-    public String saveAccount(Account account, Model model){
+    public String saveAccount(@ModelAttribute("account") Account account, Model model){
         accountService.save(account);
         model.addAttribute("accountId", account.getId());
         return "redirect:/catalog?category=All&page=1";

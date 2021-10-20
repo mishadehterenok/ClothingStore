@@ -36,7 +36,7 @@ public class LoginController {
             model.addAttribute("accountId", account.getId());
             String url;
             switch (account.getRole()){
-                case USER: url = "redirect:/catalog/category/All/1";
+                case USER: url = "redirect:/catalog?category=All&page=1";
                     break;
                 case MANAGER: url = "redirect:/manager";
                     break;

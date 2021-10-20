@@ -52,7 +52,7 @@ public class Account extends BaseEntity{
     @Column(nullable = false, length = 50, unique = true)
     private String login;
 
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 50)
     private String password;
 
     @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
