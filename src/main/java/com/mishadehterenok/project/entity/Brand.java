@@ -27,10 +27,12 @@ public class Brand extends BaseEntity{
         clothes.add(clothing);
         clothing.setBrand(this);
     }
+    @Transient
     public void removeClothing(Clothing clothing){
         clothes.remove(clothing);
     }
 
+    @Transient
     public BrandDto createDto(){
         return new BrandDto(getName(), getClothes().size());
     }

@@ -39,9 +39,6 @@ public class AccountService implements BaseService<Account> {
         return (List<Account>) accountRepository.findAll();
     }
 
-    //удаляет все заказы из списка
-    //снимает сумму со счета
-    //изменяет количество товаров на складе
     public void updateAccountAfterPurchaseOrders(Long accountId, Double totalAmount, List<Order> orders){
         Account account = findById(accountId);
         account.subtractAmount(totalAmount);
@@ -50,9 +47,6 @@ public class AccountService implements BaseService<Account> {
         save(account);
     }
 
-    //удаляет один заказ из списка
-    //снимает сумму со счета
-    //изменяет количество товаров на складе
     public void updateAccountAfterPurchaseOneOrder(Long accountId, Order order){
         Account account = findById(accountId);
         account.subtractAmount(order.getFinalPrice());

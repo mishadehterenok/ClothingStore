@@ -46,17 +46,14 @@ public class CatalogController {
         model.addAttribute("allSizes", allSizes);
     }
 
-    //формирование каталога по категории, бренду, размеру, строке поиска, сотрировке и номеру страницы
     @GetMapping("/catalog?category=All&page=2")
     public ModelAndView showCatalogPageByCategories(@RequestParam() Map<String, String> allParams,
                                                     @SessionAttribute("sortType") String currentSortingType,
                                                     ModelAndView model) {
-        //если в парметрах есть сортировка то меняем текущую и кидаем в сессиию
         if (allParams.containsKey("sortType")) {
             model.addObject("sortType", allParams.get("sortType"));
         }
         List<Clothing> clothingList = null;
-        //далее сортируем в зависимости от категории
         if (allParams.containsKey("category")) {
             String categoryName = allParams.get("category");
             if (categoryName.equals("All")) {
@@ -89,7 +86,6 @@ public class CatalogController {
                 new ModelAndView("/error404");
     }
 
-    //формирование модели для страницы каталога, на странице будет по 6 элементов одежды
     private ModelAndView getModelAndViewForCatalogPage(@RequestParam("page") int pageNumber,
                                                        ModelAndView model,
                                                        List<Clothing> clothingList) {
@@ -106,7 +102,6 @@ public class CatalogController {
         return model;
     }
 
-    //формирование списка вещей в зависимости от номера страницы, на странице будет по 6 элементов одежды
     private List<Clothing> getClothingListAccordingToPageNumber(int pageNumber, List<Clothing> clothingList) {
         int listSize = clothingList.size();
         int numberOfPages = listSize % 6 == 0 ?

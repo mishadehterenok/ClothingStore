@@ -25,7 +25,6 @@ public class BasketController {
         this.accountService = accountService;
     }
 
-    //формируем страницу корзины, добавляем в модель все заказы и считаем общую сумму
     @GetMapping("/basket")
     public ModelAndView showBasketPage(@SessionAttribute ("accountId") Long accountId,
                                        ModelAndView model){
@@ -37,7 +36,6 @@ public class BasketController {
         return model;
     }
 
-    //удаление заказа по нажатию соответствующей кнопки
     @PostMapping("/deleteOrder/{id}")
     public String deleteOrder(@PathVariable("id") Long orderId,
                               @SessionAttribute("accountId") Long accountId){
@@ -45,9 +43,6 @@ public class BasketController {
         return "redirect:/basket";
     }
 
-    //   оплата всех заказов
-    // - снятие денег со счета
-    // - изменение количества товаров в базе
     @PostMapping("/buyAll/{totalAmount}")
     public String buyAllClothingInBasket(@PathVariable("totalAmount") Double totalAmount,
                                          @SessionAttribute("accountId") Long accountId){
@@ -56,7 +51,6 @@ public class BasketController {
         return "redirect:/basket";
     }
 
-    //оплата одного заказа
     @PostMapping("/buyOne/{orderId}")
     public String buyOneClothingInBasket(@PathVariable("orderId") Long orderId,
                                          @SessionAttribute("accountId") Long accountId) {

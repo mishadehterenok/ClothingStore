@@ -25,15 +25,18 @@ public class Category extends BaseEntity{
     inverseJoinColumns = @JoinColumn(name = "clothing_id"))
     private List<Clothing> clothes;
 
+    @Transient
     public void addClothing(Clothing clothing){
         clothes.add(clothing);
         clothing.getCategories().add(this);
     }
+    @Transient
     public void removeClothing(Clothing clothing){
         clothes.remove(clothing);
         clothing.getCategories().remove(this);
     }
 
+    @Transient
     public CategoryDto createDto(){
         return new CategoryDto(getName(), clothes.size());
     }

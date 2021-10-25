@@ -29,7 +29,7 @@ public class RegistrationController {
         return model;
     }
 
-    //TODO: добавить валидацию
+    //TODO: security and validation
     @PostMapping("/registration/save")
     public String saveAccount(@ModelAttribute("account") Account account, Model model){
         accountService.save(account);

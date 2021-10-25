@@ -45,16 +45,19 @@ public class Clothing extends BaseEntity{
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
+    @Transient
     public void addCategory(Category category){
         categories.add(category);
         category.getClothes().add(this);
     }
 
+    @Transient
     public void removeCategory(Category category){
         categories.remove(category);
         category.getClothes().remove(this);
     }
 
+    @Transient
     public void subtractQuantity(int n){
         this.quantityInStock -= n;
     }

@@ -58,18 +58,22 @@ public class Account extends BaseEntity{
     @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();
 
+    @Transient
     public void addOrder(Order order){
         orders.add(order);
         order.setAccount(this);
     }
+    @Transient
     public void removeOrder(Order order){
         orders.remove(order);
     }
 
+    @Transient
     public void removeAllOrders(List<Order> orders){
         orders.removeAll(orders);
     }
 
+    @Transient
     public void subtractAmount(Double amount){
         this.accountAmount -= amount;
     }

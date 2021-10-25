@@ -28,7 +28,6 @@ public class ClothingService{
         return clothingRepository.findById(id).get();
     }
 
-    //выборка по всей одежде
     public List<Clothing> findAllByOrderByPriceAsc(){
         return clothingRepository.findAllByOrderByPriceAsc();
     }
@@ -37,7 +36,6 @@ public class ClothingService{
     }
 
 
-    //выборка по категории
     public List<Clothing> findAllByCategoryNameOrderByPriceAsc(String name){
         CategoryService categoryService = new CategoryService();
         return clothingRepository.findAllByCategoriesContainingOrderByPriceAsc(categoryService.findByName(name));
@@ -48,7 +46,6 @@ public class ClothingService{
     }
 
 
-    //выборка по бренду
     public List<Clothing> findAllByBrandNameOrderByPriceAsc(String name){
         return clothingRepository.findAllByBrand_NameOrderByPriceAsc(name);
     }
@@ -57,7 +54,6 @@ public class ClothingService{
     }
 
 
-    //выборка по размеру
     public List<Clothing> findAllBySizeNameOrderByPriceAsc(String sizeName){
         return clothingRepository.findAllBySizesContainingOrderByPriceAsc(Size.valueOf(sizeName));
     }
@@ -66,7 +62,6 @@ public class ClothingService{
     }
 
 
-    //методы для строки поиска по названию
     public List<Clothing> findAllByNameIgnoreCaseContainingOrderByPriceAsc(String st){
         return clothingRepository.findAllByNameIgnoreCaseContainingOrderByPriceAsc(st);
     }

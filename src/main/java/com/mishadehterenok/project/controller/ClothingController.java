@@ -24,8 +24,6 @@ public class ClothingController {
         this.accountService = accountService;
     }
 
-    //название одежды - это будет ссылка на его личную страницу,
-    //на странице одежды будет форма для заполнения заказа(будут скрытые поля некоторые)
     @GetMapping("/clothing/{id}")
     public String showClothingPage(@PathVariable("id") Long id,
                                    @SessionAttribute("accountId") Long accountId,
@@ -39,8 +37,6 @@ public class ClothingController {
         return "clothing";
     }
 
-    //после заполнения формы идет сохранение нового заказа(или обновление существующего)
-    // и редирект на страницу корзины
     @PostMapping("/order/save")
     public String saveOrder(@ModelAttribute("order") Order order,
                             @SessionAttribute("accountId") Long accountId){
